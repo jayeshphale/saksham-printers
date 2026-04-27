@@ -5,7 +5,7 @@ import { FaBars, FaShoppingCart } from 'react-icons/fa';
 
 export default function Navbar() {
     return (
-        <header className="sticky top-0 z-50 bg-gradient-to-r from-slate-900 via-slate-800 to-black text-white shadow-lg shadow-primary-600/10 transition-all h-[180px] flex items-center w-full">
+        <header className="sticky top-0 z-50 bg-gradient-to-r from-slate-900 via-slate-800 to-black text-white shadow-lg shadow-primary-600/10 transition-all h-[150px] flex items-center w-full">
             {/* Animated background */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/5 rounded-full blur-3xl"></div>
