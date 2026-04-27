@@ -5,11 +5,10 @@ import { Card } from '@/components/Card';
 import { Button } from '@/components/Button';
 import { Input } from '@/components/Input';
 import { Loader } from '@/components/Loader';
+<<<<<<< HEAD
 import { FaEdit, FaTrash, FaPlus } from 'react-icons/fa';
-
-interface Product {
-    _id: string;
-    name: string;
+=======
+import { FaEdit, FaTrash, FaPlus, FaUpload } from 'react-icons/fa';
     category: string;
     basePrice: number;
     image: string;
@@ -71,10 +70,21 @@ export default function ProductsManagement() {
     const [search, setSearch] = useState('');
     const [statusFilter, setStatusFilter] = useState<'all' | 'active' | 'inactive'>('all');
     const [uploading, setUploading] = useState(false);
+<<<<<<< HEAD
 
     const fetchProducts = async () => {
         try {
             const res = await api.get('/products/admin', { params: { limit: 200 } });
+=======
+    const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+    const fetchProducts = async () => {
+        try {
+            const res = await api.get('/products/admin', {
+                params: { limit: 200, _t: Date.now() },
+                headers: { 'Cache-Control': 'no-cache' }
+            });
+>>>>>>> c6d820f (Initial commit)
             setProducts(Array.isArray(res.data.data) ? res.data.data : []);
         } catch (error) {
             console.error('Failed to fetch products:', error);
@@ -136,7 +146,12 @@ export default function ProductsManagement() {
 
         try {
             if (editingId) {
+<<<<<<< HEAD
                 await api.put(`/products/${editingId}`, formData);
+=======
+                const response = await api.put(`/products/${editingId}`, formData);
+                setProducts((prev) => prev.map((product) => product._id === editingId ? response.data.data : product));
+>>>>>>> c6d820f (Initial commit)
                 alert('Product updated successfully!');
             } else {
                 await api.post('/products', formData);
@@ -359,10 +374,15 @@ export default function ProductsManagement() {
                                 <div className="space-y-3">
                                     <div className="flex gap-2">
                                         <input
+<<<<<<< HEAD
+=======
+                                            ref={fileInputRef}
+>>>>>>> c6d820f (Initial commit)
                                             type="file"
                                             accept="image/*"
                                             onChange={handleImageUpload}
                                             disabled={uploading}
+<<<<<<< HEAD
                                             className="flex-1 px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-slate-100"
                                         />
                                         {uploading && <span className="px-3 py-2 text-sm text-blue-600">Uploading...</span>}
@@ -372,6 +392,24 @@ export default function ProductsManagement() {
                                         value={formData.image}
                                         onChange={(e) => setFormData({ ...formData, image: e.target.value })}
                                         placeholder="Enter image URL"
+=======
+                                            className="hidden"
+                                        />
+                                        <Button
+                                            type="button"
+                                            onClick={() => fileInputRef.current?.click()}
+                                            className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-300"
+                                        >
+                                            <FaUpload /> Upload Image
+                                        </Button>
+                                        {uploading && <span className="px-3 py-2 text-sm text-blue-600">Uploading...</span>}
+                                    </div>
+                                    <div className="text-xs text-slate-500">Or paste image URL if you already have one</div>
+                                    <Input
+                                        value={formData.image}
+                                        onChange={(e) => setFormData({ ...formData, image: e.target.value })}
+                                        placeholder="Enter image URL (optional)"
+>>>>>>> c6d820f (Initial commit)
                                     />
                                 </div>
                                 {formData.image && (

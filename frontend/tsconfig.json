@@ -15,11 +15,13 @@
     "incremental": true,
     "plugins": [
       {
-        "name": "next"
       }
-    ],
-    "paths": {
       "@/*": ["./src/*"]
+=======
+      "@/*": [
+        "./src/*"
+      ]
+>>>>>>> c6d820f (Initial commit)
     }
   },
   "include": [
