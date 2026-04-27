@@ -1,6 +1,7 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from './Button';
-import { FaPrint, FaBars, FaShoppingCart } from 'react-icons/fa';
+import { FaBars, FaShoppingCart } from 'react-icons/fa';
 
 export default function Navbar() {
     return (
@@ -12,11 +13,14 @@ export default function Navbar() {
             </div>
 
             <div className="max-w-7xl w-full mx-auto px-4 lg:px-8 flex justify-between items-center relative z-10">
-                <Link href="/" className="flex items-center gap-2 group">
-                    <div className="p-2 rounded-xl bg-gradient-to-br from-primary-500 to-pink-500 group-hover:shadow-lg group-hover:shadow-primary-500/50 transition-all">
-                        <FaPrint className="w-6 h-6 text-white" />
+                <Link href="/" className="flex items-center gap-3 group">
+                    <div className="relative w-12 h-12 rounded-xl overflow-hidden bg-white/10 border border-white/10 p-1 shadow-lg shadow-primary-500/20">
+                        <Image src="/images/saksham-printers-logo.png" alt="Saksham Printers logo" fill className="object-contain" />
                     </div>
-                    <span className="text-2xl font-black tracking-tight bg-gradient-to-r from-primary-400 via-pink-300 to-purple-400 bg-clip-text text-transparent group-hover:from-primary-300 group-hover:via-pink-200 group-hover:to-purple-300 transition-all">Saksham</span>
+                    <div>
+                        <p className="text-sm uppercase tracking-[0.3em] text-slate-300">Saksham</p>
+                        <h1 className="text-2xl font-black tracking-tight text-white">Printers</h1>
+                    </div>
                 </Link>
 
                 <nav className="hidden md:flex gap-8 font-semibold text-sm">

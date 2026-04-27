@@ -156,7 +156,13 @@ export default function AllProductsPage() {
                                                     <div className="absolute top-6 left-6 z-10 bg-black text-white text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full shadow-lg">Volume Deal</div>
                                                 )}
                                                 <div className="aspect-[4/3] shrink-0 rounded-2xl overflow-hidden mb-5 bg-slate-100 relative">
-                                                    <img src={p.image} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={p.name} />
+                                                    {p.image ? (
+                                                        <img src={p.image} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={p.name} />
+                                                    ) : (
+                                                        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-slate-200 to-slate-300 text-slate-500 font-semibold">
+                                                            Image not available
+                                                        </div>
+                                                    )}
                                                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                                                 </div>
                                                 <div className="flex-1 flex flex-col justify-between">
