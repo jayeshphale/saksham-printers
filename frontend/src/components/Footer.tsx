@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-12 border-b border-white/10 pb-16 mb-8">
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-6">
-              <div className="relative w-14 h-14 rounded-2xl overflow-hidden bg-white/10 border border-white/10 p-1 shadow-lg shadow-primary-500/20">
+              <div className="relative w-[260px] h-[130px]">
                 <Image
                     src="https://res.cloudinary.com/ddoidhjkk/image/upload/v1777268749/Saksham_Pinters_Logo_white_rqimrr.png"
                     alt="Saksham Printers logo"

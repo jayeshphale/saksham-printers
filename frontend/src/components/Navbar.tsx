@@ -5,7 +5,7 @@ import { FaBars, FaShoppingCart } from 'react-icons/fa';
 
 export default function Navbar() {
     return (
-        <header className="sticky top-0 z-50 bg-gradient-to-r from-slate-900 via-slate-800 to-black text-white shadow-lg shadow-primary-600/10 transition-all h-[72px] flex items-center w-full">
+        <header className="sticky top-0 z-50 bg-gradient-to-r from-slate-900 via-slate-800 to-black text-white shadow-lg shadow-primary-600/10 transition-all h-[180px] flex items-center w-full">
             {/* Animated background */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/5 rounded-full blur-3xl"></div>
@@ -14,7 +14,7 @@ export default function Navbar() {
 
             <div className="max-w-7xl w-full mx-auto px-4 lg:px-8 flex justify-between items-center relative z-10">
                 <Link href="/" className="flex items-center gap-3 group">
-                    <div className="relative w-14 h-14 rounded-xl overflow-hidden bg-white/10 border border-white/10 p-1 shadow-lg shadow-primary-500/20">
+                    <div className="relative w-[260px] h-[130px]">
                         <Image
                             src="https://res.cloudinary.com/ddoidhjkk/image/upload/v1777268749/Saksham_Pinters_Logo_white_rqimrr.png"
                             alt="Saksham Printers logo"
