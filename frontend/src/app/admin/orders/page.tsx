@@ -17,6 +17,11 @@ interface Order {
     finalPrice: number;
     status: string;
     createdAt: string;
+    userFeedback?: {
+        rating: number;
+        comment?: string;
+        submittedAt?: string;
+    };
 }
 
 const STATUSES = [
