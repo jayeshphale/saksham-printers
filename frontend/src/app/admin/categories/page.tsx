@@ -1,14 +1,15 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import api from '@/services/api';
 import { Card } from '@/components/Card';
 import { Button } from '@/components/Button';
 import { Input } from '@/components/Input';
 import { Loader } from '@/components/Loader';
-<<<<<<< HEAD
-import { FaEdit, FaTrash, FaPlus } from 'react-icons/fa';
-=======
 import { FaEdit, FaTrash, FaPlus, FaUpload } from 'react-icons/fa';
+
+interface Category {
+    _id: string;
+    name: string;
     slug: string;
     image: string;
     isActive: boolean;
@@ -51,10 +52,7 @@ export default function CategoriesManagement() {
     const [submitting, setSubmitting] = useState(false);
     const [search, setSearch] = useState('');
     const [uploading, setUploading] = useState(false);
-<<<<<<< HEAD
-=======
     const fileInputRef = useRef<HTMLInputElement | null>(null);
->>>>>>> c6d820f (Initial commit)
 
     const fetchCategories = async () => {
         try {
@@ -262,25 +260,11 @@ export default function CategoriesManagement() {
                                 <div className="space-y-3">
                                     <div className="flex gap-2">
                                         <input
-<<<<<<< HEAD
-=======
                                             ref={fileInputRef}
->>>>>>> c6d820f (Initial commit)
                                             type="file"
                                             accept="image/*"
                                             onChange={handleImageUpload}
                                             disabled={uploading}
-<<<<<<< HEAD
-                                            className="flex-1 px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-slate-100"
-                                        />
-                                        {uploading && <span className="px-3 py-2 text-sm text-blue-600">Uploading...</span>}
-                                    </div>
-                                    <div className="text-xs text-slate-500">or paste image URL:</div>
-                                    <Input
-                                        value={formData.image}
-                                        onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                                        placeholder="Enter image URL"
-=======
                                             className="hidden"
                                         />
                                         <Button
@@ -297,7 +281,6 @@ export default function CategoriesManagement() {
                                         value={formData.image}
                                         onChange={(e) => setFormData({ ...formData, image: e.target.value })}
                                         placeholder="Enter image URL (optional)"
->>>>>>> c6d820f (Initial commit)
                                     />
                                 </div>
                                 {formData.image && (
