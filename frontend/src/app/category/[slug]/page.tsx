@@ -6,7 +6,7 @@ import { FaArrowLeft } from 'react-icons/fa';
 
 const API_BASE = (() => {
     const apiHost = process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, '');
-    if (!apiHost) return 'http://localhost:5000/api';
+    if (!apiHost) return '/api';
     return apiHost.endsWith('/api') ? apiHost : `${apiHost}/api`;
 })();
 

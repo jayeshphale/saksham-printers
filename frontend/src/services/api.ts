@@ -5,9 +5,7 @@ const defaultBaseURL = apiHost && apiHost !== ''
     ? apiHost.endsWith('/api')
         ? apiHost
         : `${apiHost}/api`
-    : typeof window !== 'undefined'
-        ? `${window.location.origin}/api`
-        : 'http://localhost:5000/api';
+    : '/api';
 
 const api = axios.create({
     baseURL: defaultBaseURL,
