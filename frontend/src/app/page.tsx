@@ -6,7 +6,7 @@ export const dynamic = 'force-dynamic';
 
 const API_BASE = (() => {
   const apiHost = process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, '');
-  if (!apiHost) return '/api';
+  if (!apiHost) return process.env.NODE_ENV === 'development' ? '/api' : 'https://saksham-printers-backend.onrender.com/api';
   return apiHost.endsWith('/api') ? apiHost : `${apiHost}/api`;
 })();
 

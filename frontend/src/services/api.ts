@@ -5,7 +5,9 @@ const defaultBaseURL = apiHost && apiHost !== ''
     ? apiHost.endsWith('/api')
         ? apiHost
         : `${apiHost}/api`
-    : '/api';
+    : process.env.NODE_ENV === 'development'
+        ? '/api'
+        : 'https://saksham-printers-backend.onrender.com/api';
 
 const api = axios.create({
     baseURL: defaultBaseURL,
