@@ -4,9 +4,15 @@ import { FaArrowRight, FaShieldAlt, FaCheckCircle, FaTruck, FaShippingFast, FaPr
 
 export const dynamic = 'force-dynamic';
 
+const API_BASE = (() => {
+  const apiHost = process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, '');
+  if (!apiHost) return 'http://localhost:5000/api';
+  return apiHost.endsWith('/api') ? apiHost : `${apiHost}/api`;
+})();
+
 async function getCategories() {
   try {
-    const res = await fetch('http://localhost:5000/api/categories', { cache: 'no-store' });
+    const res = await fetch(`${API_BASE}/categories`, { cache: 'no-store' });
     if (!res.ok) return [];
     const json = await res.json();
     return json.data || [];
@@ -17,7 +23,7 @@ async function getCategories() {
 
 async function getPopularProducts() {
   try {
-    const res = await fetch('http://localhost:5000/api/products', { cache: 'no-store' });
+    const res = await fetch(`${API_BASE}/products`, { cache: 'no-store' });
     if (!res.ok) return [];
     const json = await res.json();
     return (json.data || []).slice(0, 8); // Top 8 Trending

@@ -2,7 +2,7 @@
 import { useState, useEffect, use } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/Button';
-import axios from 'axios';
+import api from '@/services/api';
 import { FaArrowLeft, FaCheckCircle, FaCloudUploadAlt, FaShieldAlt, FaStar, FaTruck, FaPaintBrush } from 'react-icons/fa';
 import Link from 'next/link';
 
@@ -29,7 +29,7 @@ export default function ProductDetail({ params }: { params: Promise<{ slug: stri
     useEffect(() => {
         async function fetchProduct() {
             try {
-                const { data } = await axios.get(`http://localhost:5000/api/products/${slug}`);
+                const { data } = await api.get(`/products/${slug}`);
                 setProduct(data.data);
                 setEstimatedPrice(data.data.basePrice);
 
@@ -113,7 +113,7 @@ export default function ProductDetail({ params }: { params: Promise<{ slug: stri
                 formData.append('file', file);
             }
 
-            const { data } = await axios.post('http://localhost:5000/api/orders', formData, {
+            const { data } = await api.post('/orders', formData, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
 

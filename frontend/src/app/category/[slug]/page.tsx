@@ -4,8 +4,14 @@ import Link from 'next/link';
 import { Button } from '@/components/Button';
 import { FaArrowLeft } from 'react-icons/fa';
 
+const API_BASE = (() => {
+    const apiHost = process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, '');
+    if (!apiHost) return 'http://localhost:5000/api';
+    return apiHost.endsWith('/api') ? apiHost : `${apiHost}/api`;
+})();
+
 async function getCategory(slug: string) {
-    const res = await fetch(`http://localhost:5000/api/categories/${slug}`, { cache: 'no-store' });
+    const res = await fetch(`${API_BASE}/categories/${slug}`, { cache: 'no-store' });
     if (!res.ok) return null;
     const json = await res.json();
     return json.data;
@@ -13,7 +19,7 @@ async function getCategory(slug: string) {
 
 async function getProductsByCategory(categoryName: string) {
     const encoded = encodeURIComponent(categoryName);
-    const res = await fetch(`http://localhost:5000/api/products?category=${encoded}`, { cache: 'no-store' });
+    const res = await fetch(`${API_BASE}/products?category=${encoded}`, { cache: 'no-store' });
     if (!res.ok) return [];
     const json = await res.json();
     return json.data || [];
