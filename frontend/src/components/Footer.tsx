@@ -10,7 +10,7 @@ export default function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-6">
               <div className="relative w-12 h-12 rounded-2xl overflow-hidden bg-white/10 border border-white/10 p-1 shadow-lg shadow-primary-500/20">
-                <Image src="/images/saksham-printers-logo.png" alt="Saksham Printers logo" fill className="object-contain" />
+                <Image src="/images/saksham-printers-logo-v2.png" alt="Saksham Printers logo" fill className="object-contain" />
               </div>
               <div>
                 <p className="text-sm uppercase tracking-[0.3em] text-slate-400">Saksham</p>
