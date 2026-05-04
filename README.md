@@ -88,6 +88,9 @@ This endpoint creates the admin account only if no admin exists yet.
 3. Start the Next.js app: `npm run dev`
 4. Open the app in the browser at `http://localhost:3000`
 
+## Deployment
+- Live site: https://saksham-printers.vercel.app/
+
 ## Notes
 
 - The admin login is authenticated via the backend using JWT.
