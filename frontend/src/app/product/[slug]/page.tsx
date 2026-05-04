@@ -25,6 +25,23 @@ export default function ProductDetail({ params }: { params: Promise<{ slug: stri
     const [estimatedPrice, setEstimatedPrice] = useState(0);
     const [submitting, setSubmitting] = useState(false);
     const [error, setError] = useState('');
+    const [aiDescription, setAiDescription] = useState('');
+    const [aiLoading, setAiLoading] = useState(false);
+    const [aiError, setAiError] = useState('');
+
+    const handleGenerateAiDescription = async () => {
+        if (!product) return;
+        setAiLoading(true);
+        setAiError('');
+        try {
+            const { data } = await api.post('/ai/description', { productId: product._id });
+            setAiDescription(data.data.description);
+        } catch (err: any) {
+            setAiError(err.response?.data?.message || 'Unable to generate AI description');
+        } finally {
+            setAiLoading(false);
+        }
+    };
 
     useEffect(() => {
         async function fetchProduct() {
@@ -154,6 +171,26 @@ export default function ProductDetail({ params }: { params: Promise<{ slug: stri
                         <p className="text-lg text-slate-600 leading-relaxed font-medium">
                             {product.description}
                         </p>
+                    </div>
+
+                    <div className="space-y-4 rounded-3xl border border-primary-100 bg-primary-50 p-6">
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                            <div>
+                                <h3 className="text-lg font-bold text-primary-900">AI Product Summary</h3>
+                                <p className="text-sm text-primary-700">Generate a smart description for this print service.</p>
+                            </div>
+                            <Button type="button" className="rounded-full bg-primary-600 text-white px-6 py-3 hover:bg-primary-700" isLoading={aiLoading} onClick={handleGenerateAiDescription}>
+                                {aiLoading ? 'Generating...' : 'Generate AI Summary'}
+                            </Button>
+                        </div>
+                        {aiError && <div className="rounded-2xl bg-red-50 border border-red-200 p-4 text-sm font-semibold text-red-700">{aiError}</div>}
+                        {aiDescription ? (
+                            <div className="rounded-3xl bg-white border border-slate-200 p-5 text-slate-700 text-sm leading-7">
+                                {aiDescription}
+                            </div>
+                        ) : (
+                            <p className="text-sm text-slate-500">Click the button to create a fresh AI-powered product summary for customers.</p>
+                        )}
                     </div>
 
                     <div className="grid sm:grid-cols-2 gap-4 pt-6 border-t border-slate-100">

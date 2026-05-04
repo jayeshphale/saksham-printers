@@ -79,7 +79,7 @@ This endpoint creates the admin account only if no admin exists yet.
 ### Backend Setup
 1. Navigate to `backend/`
 2. Install dependencies: `npm install`
-3. Create a `.env` file with the required environment variables (MongoDB URI, JWT secret, Cloudinary keys, etc.)
+3. Create a `.env` file with the required environment variables (MongoDB URI, JWT secret, Cloudinary keys, OpenAI API key, etc.)
 4. Start the backend server: `npm run dev` or `node server.js`
 
 ### Frontend Setup
@@ -97,3 +97,4 @@ This endpoint creates the admin account only if no admin exists yet.
 - Product and category data can be seeded using the backend seeder.
 - The backend stores admin password securely using bcrypt hashing.
 - Cloudinary is used for image uploads, so Cloudinary credentials are required for upload functionality.
+- AI-powered product descriptions can be generated using a backend OpenAI integration.
